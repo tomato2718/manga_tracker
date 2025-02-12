@@ -1,0 +1,41 @@
+[project]
+name = "manga-tracker"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "tomato2718",email = "qweasdzxc030@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "beautifulsoup4 (>=4.13.3,<5.0.0)",
+    "requests (>=2.32.3,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-cov = "^6.0.0"
+mypy = "^1.15.0"
+ruff = "^0.9.6"
+
+[tool.pytest.ini_options]
+filterwarnings = [
+    "ignore::DeprecationWarning"
+]
+addopts = [
+    "-v",
+    "--cov=manga_tracker",
+    "--cov-report=term-missing"
+]
+
+[tool.coverage.report]
+omit = [
+    "*/__main__.py",
+    "*/_parse_args.py",
+    "*/__init__.py"
+]
