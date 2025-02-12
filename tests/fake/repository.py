@@ -10,6 +10,9 @@ from manga_tracker.domain import Manga, Result
 class FakeMangaRepository:
     mangas: dict[UUID, Manga]
 
+    def __init__(self) -> None:
+        self.mangas = {}
+
     def upsert_many(self, mangas: Iterable[Manga]) -> "Result[None, None]":
         for manga in mangas:
             self.mangas[manga.id] = manga
