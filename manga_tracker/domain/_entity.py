@@ -1,11 +1,12 @@
 __all__ = ["Manga"]
 
 from dataclasses import dataclass
+from uuid import UUID
 
 
 @dataclass(slots=True)
 class Manga:
-    id: bytes
+    id: UUID
     name: str
     author: str
     source: str
