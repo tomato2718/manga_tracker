@@ -39,6 +39,7 @@ class TestSQLiteMangaRepository:
                 for default in DEFAULT
             ],
         )
+        connection.commit()
         connection.close()
 
     def test_upsert_many_givenMangas_persistToDatabase(self) -> None:

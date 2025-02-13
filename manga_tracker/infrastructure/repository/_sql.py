@@ -1,4 +1,4 @@
-__all__ = ["INIT_TABLE", "DROP_TABLE", "INSERT"]
+__all__ = ["INIT_TABLE", "DROP_TABLE", "INSERT", "UPDATE"]
 
 INIT_TABLE = """\
 CREATE TABLE IF NOT EXISTS manga (
@@ -14,6 +14,17 @@ CREATE TABLE IF NOT EXISTS manga (
 
 DROP_TABLE = """\
 DROP TABLE IF EXISTS manga;
+"""
+
+UPDATE = """
+UPDATE manga SET
+    name = ?,
+    author = ?,
+    source = ?,
+    link = ?,
+    latest_chapter = ?,
+    updated = ?
+WHERE id = ?
 """
 
 INSERT = """\

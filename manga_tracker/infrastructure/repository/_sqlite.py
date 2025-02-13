@@ -7,7 +7,7 @@ from typing import Self
 from manga_tracker.domain import Manga, Result
 from manga_tracker.infrastructure.shared.result import Ok
 
-from ._sql import DROP_TABLE, INIT_TABLE, INSERT
+from ._sql import DROP_TABLE, INIT_TABLE, INSERT, UPDATE
 
 
 class SQLiteMangaRepository:
@@ -34,17 +34,30 @@ class SQLiteMangaRepository:
         cursor = self.__sqlite.cursor()
         for manga in mangas:
             cursor.execute(
-                INSERT,
+                UPDATE,
                 (
-                    manga.id.bytes,
                     manga.name,
                     manga.author,
                     manga.source,
                     manga.link,
                     manga.latest_chapter,
                     manga.updated,
+                    manga.id.bytes,
                 ),
             )
+            if cursor.rowcount == 0:
+                cursor.execute(
+                    INSERT,
+                    (
+                        manga.id.bytes,
+                        manga.name,
+                        manga.author,
+                        manga.source,
+                        manga.link,
+                        manga.latest_chapter,
+                        manga.updated,
+                    ),
+                )
         self.__sqlite.commit()
         return Ok(None)
 
