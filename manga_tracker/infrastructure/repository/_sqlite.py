@@ -5,8 +5,8 @@ from sqlite3 import Connection, connect
 from typing import Self
 
 from manga_tracker.domain import Manga, Result
+from manga_tracker.infrastructure.shared.result import Ok
 
-from ._result import Ok
 from ._sql import DROP_TABLE, INIT_TABLE, INSERT
 
 
