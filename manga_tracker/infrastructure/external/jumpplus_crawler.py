@@ -3,7 +3,7 @@ __all__ = ["JumpplusCrawler"]
 from collections.abc import Iterable
 from time import time
 from typing import cast
-from uuid import NAMESPACE_URL, UUID, uuid3
+from uuid import NAMESPACE_URL, uuid3
 
 from bs4 import BeautifulSoup
 from requests import get
